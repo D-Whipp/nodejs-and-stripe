@@ -1,0 +1,27 @@
+{
+  "name": "and-stripe",
+  "version": "1.0.0",
+  "description": "learning payments with stripe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/D-Whipp/nodejs-and-stripe.git"
+  },
+  "author": "Web Dev Simplified",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/D-Whipp/nodejs-and-stripe/issues"
+  },
+  "homepage": "https://github.com/D-Whipp/nodejs-and-stripe#readme",
+  "dependencies": {
+    "ejs": "^3.1.7",
+    "express": "^4.18.1",
+    "stripe": "^8.219.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0"
+  }
+}
