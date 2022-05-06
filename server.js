@@ -27,19 +27,33 @@ app.get('/store', (req, res) => {
   });
 });
 
-app.post('/purchase', (req, res) => {
-  fs.readFile('items.json', (err, data) => {
-    if (err) {
+app.post('/purchase', function (req, res) {
+  fs.readFile('items.json', function (error, data) {
+    if (error) {
       res.status(500).end();
     } else {
-      // console.log('purchased');
       const itemsJson = JSON.parse(data);
       const itemsArray = itemsJson.music.concat(itemsJson.merch);
       let total = 0;
+      // req.body.items.forEach(function (item) {
+      //   const itemJson = itemsArray.find(function (i) {
+      //     return i.id == item.id;
+      //   });
+      //   console.log(itemsJson);
+      //   // console.log(itemJson);
+      //   total = total + itemJson.price * item.quantity;
+      // });
       req.body.items.forEach((item) => {
         const itemJson = itemsArray.find(function (i) {
-          return i.id == item.id;
+          console.log(i);
+          item.id = i.id;
+          console.log(item.id);
+          return item.id;
+          // return i.id == item.id;
         });
+        // console.log(item);
+        // console.log(itemsJson);
+        // console.log(itemJson);
         total = total + itemJson.price * item.quantity;
       });
 
@@ -54,7 +68,7 @@ app.post('/purchase', (req, res) => {
           res.json({ message: 'Successfully purchased items' });
         })
         .catch(function () {
-          console.log('Charge Failure');
+          console.log('Charge Fail');
           res.status(500).end();
         });
     }
